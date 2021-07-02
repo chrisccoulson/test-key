@@ -36,7 +36,7 @@ func dumpSrkInfo() error {
 		if err != nil {
 			return xerrors.Errorf("cannot read public area of SRK custom template: %w", err)
 		}
-		data, err := tpm.NVRead(tmpl, tmpl, pub.Size, 0, nil)
+		data, err := tpm.NVRead(tpm.OwnerHandleContext(), tmpl, pub.Size, 0, nil)
 		if err != nil {
 			return xerrors.Errorf("cannot read SRK custom template: %w", err)
 		}
